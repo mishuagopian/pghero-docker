@@ -1,7 +1,5 @@
 FROM ruby:3.1.3-alpine3.16
 
-MAINTAINER Andrew Kane <andrew@ankane.org>
-
 ARG INSTALL_PATH=/app
 ARG RAILS_ENV=production
 ARG DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname
@@ -14,6 +12,7 @@ WORKDIR $INSTALL_PATH
 COPY . .
 
 RUN apk add --update build-base git libpq-dev && \
+    apk add gcompat && \
     gem install bundler && \
     bundle install && \
     bundle binstubs --all && \
