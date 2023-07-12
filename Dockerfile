@@ -21,8 +21,8 @@ RUN apk add --update build-base git libpq-dev && \
     apk del build-base git && \
     rm -rf /var/cache/apk/*
 
-ENV PORT 8080
+ENV PORT 3333
 
-EXPOSE 8080
+EXPOSE 3333
 
 CMD puma -C /app/config/puma.rb
